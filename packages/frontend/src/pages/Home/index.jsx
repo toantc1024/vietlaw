@@ -1,10 +1,9 @@
 import React from "react";
-import SearchBar from "../../components/ui/SearchBar";
-
+import Navbar from "../../components/Navbar";
 const Home = () => {
   return (
-    <div className="h-full w-full ">
-      <SearchBar />
+    <div className="h-full w-full bg-red-400">
+      <Navbar />
     </div>
   );
 };
