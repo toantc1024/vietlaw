@@ -6,6 +6,18 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./app/store";
+import SuperTokens from "supertokens-web-js";
+import Session from "supertokens-web-js/recipe/session";
+import EmailPassword from "supertokens-web-js/recipe/emailpassword";
+
+SuperTokens.init({
+  appInfo: {
+    apiDomain: "http://localhost:8080",
+    apiBasePath: "/auth",
+    appName: "...",
+  },
+  recipeList: [Session.init(), EmailPassword.init()],
+});
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
