@@ -3,11 +3,21 @@ from fastapi import FastAPI, HTTPException, Depends
 from pydantic import BaseModel
 from auth import *
 from security import validate_token
-
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import StreamingResponse
 
 app = FastAPI(
     title='Vietlaw API', openapi_url='/openapi.json', docs_url='/docs',
     description='LLMs for law'
+)
+
+# Add CORS middleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000"],  # Allows CORS for this domain
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 
@@ -16,7 +26,7 @@ class LoginRequest(BaseModel):
     password: str
 
 
-@app.post('/login')
+@app.post('/auth/login')
 def login(request_data: LoginRequest):
     if verify_password(username=request_data.username, password=request_data.password):
         token = generate_token(request_data.username)
@@ -27,9 +37,15 @@ def login(request_data: LoginRequest):
         raise HTTPException(status_code=404, detail="User not found")
 
 
-@app.get('/test', dependencies=[Depends(validate_token)])
+async def fake_video_streamer():
+
+    for i in range(5):
+        yield b"This topic"
+
+
+@app.post('/api/chatbot', dependencies=[Depends(validate_token)])
 def test():
-    return {"status": "success"}
+    return StreamingResponse(fake_video_streamer())
 
 
 if __name__ == '__main__':
