@@ -1,54 +1,52 @@
-import React from "react";
-import SuperTokens, { SuperTokensWrapper } from "supertokens-auth-react";
-import { getSuperTokensRoutesForReactRouterDom } from "supertokens-auth-react/ui";
-import { ThirdPartyEmailPasswordPreBuiltUI } from "supertokens-auth-react/recipe/thirdpartyemailpassword/prebuiltui";
-import * as reactRouterDom from "react-router-dom";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import React, { Fragment, useEffect, useState } from "react";
 
-import ThirdPartyEmailPassword, {
-  Github,
-  Google,
-  Facebook,
-  Apple,
-} from "supertokens-auth-react/recipe/thirdpartyemailpassword";
-import Session from "supertokens-auth-react/recipe/session";
+import Home from "./pages/Home";
+import { Link, Route, Routes } from "react-router-dom";
+import Search from "./features/Search";
+import Login from "./pages/Login";
+import NotFound from "./pages/NotFound";
+import Chatbot from "./features/Chatbot";
 
-SuperTokens.init({
-  appInfo: {
-    // learn more about this on https://supertokens.com/docs/thirdpartyemailpassword/appinfo
-    appName: "VietLaw",
-    apiDomain: "http://localhost:8000",
-    websiteDomain: "http://localhost:3000",
-    apiBasePath: "",
-    websiteBasePath: "",
-  },
-  recipeList: [
-    ThirdPartyEmailPassword.init({
-      signInAndUpFeature: {
-        providers: [
-          Github.init(),
-          Google.init(),
-          Facebook.init(),
-          Apple.init(),
-        ],
-      },
-    }),
-    Session.init(),
-  ],
-});
-
-/* Your App */
 const App = () => {
+  const [token, setToken] = useState("");
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    setToken(token);
+  }, []);
+
   return (
-    <SuperTokensWrapper>
+    <Fragment>
       <Routes>
-        {/*This renders the login UI on the /auth route*/}
-        {getSuperTokensRoutesForReactRouterDom(reactRouterDom, [
-          ThirdPartyEmailPasswordPreBuiltUI,
-        ])}
-        {/*Your app routes*/}
+        <Route path="login" element={<Login />} />
+        <Route
+          path="/"
+          element={
+            <div className="w-full h-full flex items-center justify-center">
+              Chào mừng cuộc thi Olympic phần mềm nguồn mở
+              <Link
+                className="text-blue-600 p-4 m-4 bg-red-500 text-white  rounded-lg hover:bg-red-600"
+                to="/law"
+              >
+                /law
+              </Link>
+            </div>
+          }
+        />
+        <Route path="/law" element={<Home />}>
+          <Route path="search" element={<Search />} />
+          <Route path="chatbot" element={<Chatbot token={token} />} />
+          <Route
+            path="analyze"
+            element={
+              <div className="h-full w-full bg-green-400 text-8xl">
+                Document!
+              </div>
+            }
+          />
+        </Route>
+        <Route path="*" element={<NotFound />} />
       </Routes>
-    </SuperTokensWrapper>
+    </Fragment>
   );
 };
 
