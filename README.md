@@ -2,23 +2,33 @@
 
 View this page in other languages:
 
-- [Tiếng Việt](./docs/README_vi.md)
+- [English](./docs/README_en.md)
 
 ## Demo
 
-## Downloads
+## Tải xuống
 
-## Manually Install
-
-This project is built based on microservice.
-`Database`
-Please route to directory store database \*.zip files by
+Tất cả mã nguồn của dự án đều sẵn sàng trên Internet, bạn có thể tạo bản sao bằng lệnh sau để bắt đầu tham gia đóng góp vào dự án mã nguồn mở
 
 ```
-    cd /packages/backend/
+    git clone git@github.com:toantc1024/vietlaw.git
 ```
 
-Unzip `phapdien.zip` before start the project. When you commit code, you don't need to worry about this! We skip all database file. Please, remember to zip if you make any change in database.
+## Cài đặt
+
+### 1. Database
+
+Đối với cơ sở dự liệu, VieLaw sử dụng SQlite. Sau khi tạo bản sao của dự án về máy, đầu tiên chuyển đến thư mục `/package/backend/database`
+
+```
+    cd /packages/backend/database
+```
+
+Sau đó giải nén tệp `phapdien.zip`
+
+Nếu bạn thực hiện bất kỳ thay đổi nào trong cơ sở dữ liệu hãy nhớ nén lại trước khi commit
+
+### 2. Backend
 
 `Backend`
 Backend code is used Python, to safe install you have init a virtual environment
@@ -47,22 +57,38 @@ Start backend
     uvicorn main:app --reload
 ```
 
-`Frontend`
+### 3. Frontend
 
-## Build It By Yourself
+Chuyển con trỏ đến thư mục frontend
 
-## More Information
+```
+    cd /packages/frontend
+```
 
-[Wiki](./docs/wiki/en/Introduction.md)
+Cài đặt các thư viện từ `npm`
 
-## Contact Us
+```
+    npm install
+```
+
+Khởi chạy dự án VieLaw trên mức frontend
+
+```
+    npm run start
+```
+
+Dự án frontend sẽ được chạy trên host mặc đinh là `localhost:3000`
+
+## Thông tin khác
+
+[Wiki](./docs/wiki/vi/Introduction.md)
+
+## Mailing list, bug tracker, ...
 
 E-mails: [toantc1024](mailto:tctoan1024@gmail.com)
 
-## License
+## Giấy phép
 
-## Contributors
+## Người đóng góp
 
-## Help Localization
-
-## Sponsor
+## Tài trợ
