@@ -1,6 +1,8 @@
 # VietLaw
 
-View this page in other languages:
+![VieLaw OpenSource](image.png)
+
+Xem trang này dưới ngôn ngữ khác:
 
 - [English](./docs/README_en.md)
 
