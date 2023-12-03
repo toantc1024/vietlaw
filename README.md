@@ -13,7 +13,7 @@ Xem trang này dưới ngôn ngữ khác:
 Tất cả mã nguồn của dự án đều sẵn sàng trên Internet, bạn có thể tạo bản sao bằng lệnh sau để bắt đầu tham gia đóng góp vào dự án mã nguồn mở
 
 ```
-    git clone git@github.com:toantc1024/vietlaw.git
+    git clone git@github.com:toantc1024/vielaw.git
 ```
 
 ## Cài đặt
