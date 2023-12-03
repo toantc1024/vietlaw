@@ -1,4 +1,4 @@
-# VietLaw
+# VieLaw
 
 ![VieLaw OpenSource](image.png)
 
