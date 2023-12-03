@@ -21,19 +21,56 @@ const App = () => {
         <Route
           path="/"
           element={
-            <div className="w-full h-full flex items-center justify-center">
-              Chào mừng cuộc thi Olympic phần mềm nguồn mở
-              <Link
-                className="text-blue-600 p-4 m-4 bg-red-500 text-white  rounded-lg hover:bg-red-600"
-                to="/law"
-              >
-                /law
-              </Link>
+            <div className="h-screen w-full  flex flex-col">
+              <div className="py-8 px-4 bg-blue-500 border-b-[1px]">
+                <div className="flex  justify-between px-24 gap-24 items-center">
+                  <div className="flex gap-4">
+                    <Link to="/" className="hover:text-blue-600 text-white">
+                      Trang chủ
+                    </Link>
+                    <Link
+                      to="/law/search"
+                      className="hover:text-blue-600 text-white"
+                    >
+                      Dùng thử
+                    </Link>
+                  </div>
+
+                  <a
+                    href="https://github.com/toantc1024/vietlaw"
+                    target="_blank"
+                    className="hover:text-blue-600 text-white"
+                  >
+                    Github
+                  </a>
+                </div>
+              </div>
+
+              <div className="bg-gradient-to-b from-sky-200 to-sky-100 h-full flex flex-col gap-12 items-center justify-center p-2">
+                <div className="font-extrabold text-6xl flex text-gray-700 items-center justify-start gap-4">
+                  <span className="bg-white p-6 shadow-sm rounded-full">
+                    <span className="text-blue-500">Vie</span>
+                    <span>Law</span>
+                  </span>
+                  <span>Pháp điển thông minh</span>
+                </div>
+
+                <div className="bg-white-400"></div>
+
+                <div>
+                  <Link
+                    to="/law/search"
+                    className="bg-blue-500 text-white p-4 rounded-lg hover:ring-4 hover:bg-blue-600 transition-all ease-in-out duration-150"
+                  >
+                    Thử ngay
+                  </Link>
+                </div>
+              </div>
             </div>
           }
         />
         <Route path="/law" element={<Home />}>
-          <Route path="search" element={<Search />} />
+          <Route exact path="search" element={<Search />} />
           <Route path="chatbot" element={<Chatbot token={token} />} />
           <Route
             path="analyze"
