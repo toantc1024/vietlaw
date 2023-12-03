@@ -11,6 +11,14 @@ View this page in other languages:
 ## Manually Install
 
 This project is built based on microservice.
+`Database`
+Please route to directory store database \*.zip files by
+
+```
+    cd /packages/backend/
+```
+
+Unzip `phapdien.zip` before start the project. When you commit code, you don't need to worry about this! We skip all database file. Please, remember to zip if you make any change in database.
 
 `Backend`
 Backend code is used Python, to safe install you have init a virtual environment

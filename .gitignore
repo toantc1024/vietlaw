@@ -28,6 +28,7 @@ yarn-error.log*
 **/node_modules/
 **/publish/
 # **/*.zip
+**/*.db
 **/*.crx
 **/*.pem
 **/npm-debug.log
