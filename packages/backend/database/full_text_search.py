@@ -20,6 +20,10 @@ def create_fts_table():
 
     conn.commit()
 
+# Index CSDL ChromaDB
+# VectorDB
+# Text ->
+
 
 create_fts_table()
 

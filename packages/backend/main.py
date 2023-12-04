@@ -32,6 +32,11 @@ def chude():
     return lay_all_chuDe()
 
 
+@app.get('/api/deMuc')
+def chude():
+    return lay_all_deMuc_from_a_chuDe('An ninh')
+
+
 @app.get('/api/test')
 def test():
     return search_html_content('An ninh quốc gia')

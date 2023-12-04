@@ -12,7 +12,7 @@ def lay_du_lieu(table_name):
 
 
 def lay_all_chuDe():
-    cur.execute("SELECT Text from chuDe")
+    cur.execute("SELECT * from chuDe")
     return cur.fetchall()
 
 
@@ -22,8 +22,9 @@ def lay_all_deMuc():
 
 
 def lay_all_deMuc_from_a_chuDe(chude):
-    query = "SELECT * FROM deMuc WHERE ChuDe = ?"
-    cur.execute(query, (chude,))
+    query = "SELECT * FROM chude WHERE text LIKE ?"
+    cur.execute(query, ('%' + chude + '%',))
+
     return cur.fetchall()
 
 
