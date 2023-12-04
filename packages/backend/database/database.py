@@ -1,7 +1,8 @@
 # %%%
 import sqlite3
 
-con = sqlite3.connect("./vietlaw_database/phapdien.db", check_same_thread=False)
+con = sqlite3.connect("./database/phapdien.db",
+                      check_same_thread=False)
 cur = con.cursor()
 
 

@@ -5,6 +5,7 @@ from auth import *
 from security import validate_token
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse
+from database.database import *
 
 app = FastAPI(
     title='Vietlaw API', openapi_url='/openapi.json', docs_url='/docs',
@@ -24,6 +25,16 @@ app.add_middleware(
 class LoginRequest(BaseModel):
     username: str
     password: str
+
+
+@app.get('/api/chude')
+def chude():
+    return lay_all_chuDe()
+
+
+@app.get('/api/test')
+def test():
+    return search_html_content('An ninh quốc gia')
 
 
 @app.post('/auth/login')

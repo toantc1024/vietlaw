@@ -1,6 +1,6 @@
 # VieLaw
 
-![VieLaw OpenSource](image.png)
+![VieLaw OpenSource](./docs/images/vielaw_header.png)
 
 Xem trang này dưới ngôn ngữ khác:
 

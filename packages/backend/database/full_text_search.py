@@ -1,6 +1,7 @@
 import sqlite3
 
-conn = sqlite3.connect("./vietlaw_database/phapdien.db", check_same_thread=False)
+conn = sqlite3.connect("./database/phapdien.db",
+                       check_same_thread=False)
 cursor = conn.cursor()
 
 
@@ -24,7 +25,8 @@ create_fts_table()
 
 
 def search_html_content(query):
-    conn = sqlite3.connect("./vietlaw_database/phapdien.db", check_same_thread=False)
+    conn = sqlite3.connect(
+        "./vietlaw_database/phapdien.db", check_same_thread=False)
     cursor = conn.cursor()
 
     # Perform a full-text search
