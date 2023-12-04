@@ -6,6 +6,11 @@ Xem trang này dưới ngôn ngữ khác:
 
 - [English](./docs/README_en.md)
 
+## Tính năng
+1. Chatbot
+2. Generate câu trắc nghiệm
+3. Tra cứu pháp điển
+
 ## Demo
 
 ## Tải xuống
