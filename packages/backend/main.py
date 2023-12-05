@@ -6,6 +6,7 @@ from security import validate_token
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse
 from database.database import *
+from fastapi.responses import FileResponse
 
 app = FastAPI(
     title='Vietlaw API', openapi_url='/openapi.json', docs_url='/docs',
@@ -15,7 +16,8 @@ app = FastAPI(
 # Add CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],  # Allows CORS for this domain
+    # Allows CORS for this domain
+    allow_origins=["http://localhost:3001", "http://localhost:3000"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -27,14 +29,18 @@ class LoginRequest(BaseModel):
     password: str
 
 
-@app.get('/api/chude')
+class DeMucRequest(BaseModel):
+    demuc: str
+
+
+@app.post('/phapdien/laydemuc')
+def laydemuc(request_data: DeMucRequest):
+    return FileResponse('./database/demuc/' + request_data.demuc + '.html', media_type='text/html')
+
+
+@app.get('/phapdien/data')
 def chude():
-    return lay_all_chuDe()
-
-
-@app.get('/api/test')
-def test():
-    return search_html_content('An ninh quốc gia')
+    return getPhapDienData()
 
 
 @app.post('/auth/login')
