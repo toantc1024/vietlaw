@@ -1,8 +1,25 @@
-import React, { useState } from "react";
+import { redirect } from "react-router-dom";
+
+import React, { useEffect, useState } from "react";
+import { useUserStore } from "../../app/store";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
+  const { user, login, setError } = useUserStore();
+
+  useEffect(() => {
+    setError(false);
+    console.log({ user });
+  }, []);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (user && user.token) {
+      navigate("/");
+    }
+  }, [user]);
 
   return (
     <div className="relative flex flex-col justify-center min-h-screen overflow-hidden">
@@ -13,21 +30,17 @@ export default function Login() {
         <form
           onSubmit={async (e) => {
             e.preventDefault();
+            try {
+              await login(username, password);
+            } catch (error) {}
 
             // send Resposne to login
-            const response = await fetch("http://localhost:8000/login", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                username: username,
-                password: password,
-              }),
-            });
 
-            const { token } = await response.json();
-            localStorage.setItem("token", token);
+            // if login success redi
+
+            // if login fail show error message
+
+            // Redirect to dashboard use react-router-dom function
           }}
           className="mt-6"
         >

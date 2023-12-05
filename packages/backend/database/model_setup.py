@@ -14,7 +14,6 @@ doc = ""
 
 
 # Grenerate question
-
 question = input("Question: ")
 
 prompt = f"""

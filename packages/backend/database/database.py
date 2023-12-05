@@ -16,16 +16,28 @@ def lay_all_chuDe():
     return cur.fetchall()
 
 
+def lay_de_muc_content(demucId):
+    # cur.execute("SELECT Content from htmlContent WHERE Value = ?", (demucId,))
+    # return cur.fetchall()
+    # Get html file from d
+    pass
+
+
 def lay_all_deMuc():
-    cur.execute("SELECT Text from deMuc")
+    cur.execute("SELECT * from deMuc")
     return cur.fetchall()
 
 
-def lay_all_deMuc_from_a_chuDe(chude):
-    query = "SELECT * FROM chude WHERE text LIKE ?"
-    cur.execute(query, ('%' + chude + '%',))
+def getPhapDienData():
+    return {
+        'chude': lay_all_chuDe(),
+        'demuc': lay_all_deMuc()
+    }
 
-    return cur.fetchall()
+
+def lay_all_deMuc_from_a_chuDe(chudeId):
+    query = "SELECT * FROM deMuc WHERE deMuc.ChuDe = ?"
+    cur.execute(query, (chudeId,))
 
 
 def lay_noidung_of_de_muc(de_muc_value):
