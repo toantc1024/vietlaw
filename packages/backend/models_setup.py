@@ -19,10 +19,6 @@ question = input("Question: ")
 prompt = f"""
         {doc}
         {question}
-        
-        
-       
-        
         """
 
 DEVICE = "cpu" if not torch.cuda.is_available() else "cuda"
