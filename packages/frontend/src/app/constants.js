@@ -1,0 +1,2 @@
+export const USER_RESPONSE = "USER_RESPONSE";
+export const BOT_RESPONSE = "BOT_RESPONSE";

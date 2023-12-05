@@ -6,14 +6,18 @@ import Search from "./features/Search";
 import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
 import Chatbot from "./features/Chatbot";
+import { useUserStore } from "./app/store";
 
 const App = () => {
-  const [token, setToken] = useState("");
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    setToken(token);
-  }, []);
+  const { user, login, logout } = useUserStore();
 
+  useEffect(() => {
+    (async () => {
+      const username = process.env.REACT_APP_DEMO_USERNAME;
+      const password = process.env.REACT_APP_DEMO_PASSWORD;
+      await login(username, password);
+    })();
+  }, []);
   return (
     <Fragment>
       <Routes>
@@ -35,7 +39,6 @@ const App = () => {
                       Dùng thử
                     </Link>
                   </div>
-
                   <a
                     href="https://github.com/toantc1024/vietlaw"
                     target="_blank"
@@ -71,7 +74,7 @@ const App = () => {
         />
         <Route path="/law" element={<Home />}>
           <Route exact path="search" element={<Search />} />
-          <Route path="chatbot" element={<Chatbot token={token} />} />
+          <Route path="chatbot" element={<Chatbot />} />
           <Route
             path="analyze"
             element={

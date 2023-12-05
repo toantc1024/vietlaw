@@ -23,7 +23,7 @@ const Home = () => {
           <div className=" group-hover:bg-blue-100 text-gray-600 w-full  h-[40px] rounded-full flex items-center justify-center">
             <HiSparkles className="text-2xl" />
           </div>
-          <span className="text-gray-600 text-sm">LawDuck</span>
+          <span className="text-gray-600 text-sm">Lawyer</span>
         </Link>
 
         <Link
