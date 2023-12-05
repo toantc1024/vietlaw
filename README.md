@@ -6,6 +6,11 @@ Xem trang này dưới ngôn ngữ khác:
 
 - [English](./docs/README_en.md)
 
+## Tính năng
+1. Chatbot
+2. Generate câu trắc nghiệm
+3. Tra cứu pháp điển
+
 ## Demo
 
 ## Tải xuống
@@ -18,7 +23,17 @@ Tất cả mã nguồn của dự án đều sẵn sàng trên Internet, bạn c
 
 ## Cài đặt
 
-### 1. Database
+`
+
+### 1. Models
+
+Tạo bản sao của model học máy tại
+
+```
+    git clone git@hf.co:spaces/nhantran0506/law-llms-v2
+```
+
+### 2. Database
 
 Đối với cơ sở dự liệu, VieLaw sử dụng SQlite. Sau khi tạo bản sao của dự án về máy, đầu tiên chuyển đến thư mục `/package/backend/database`
 
@@ -30,7 +45,7 @@ Sau đó giải nén tệp `phapdien.zip`
 
 Nếu bạn thực hiện bất kỳ thay đổi nào trong cơ sở dữ liệu hãy nhớ nén lại trước khi commit
 
-### 2. Backend
+### 3. Backend
 
 `Backend`
 Backend code is used Python, to safe install you have init a virtual environment
@@ -59,7 +74,7 @@ Start backend
     uvicorn main:app --reload
 ```
 
-### 3. Frontend
+### 4. Frontend
 
 Chuyển con trỏ đến thư mục frontend
 
@@ -77,7 +92,8 @@ Khởi chạy dự án VieLaw trên mức frontend
 
 ```
     npm run start
-```
+``
+
 
 Dự án frontend sẽ được chạy trên host mặc đinh là `localhost:3000`
 
@@ -90,7 +106,29 @@ Dự án frontend sẽ được chạy trên host mặc đinh là `localhost:300
 E-mails: [toantc1024](mailto:tctoan1024@gmail.com)
 
 ## Giấy phép
+### 1. Front End
+- Icons: https://react-icons.github.io/react-icons/ - MIT (Hero Icons)
+- ReactJS 18 - MIT
+- Font family - Google Fonts - MIT
+- Redux - MIT
+- React Router Dom
+- TailwindCSS
+### 2. Backend
+fastapi==0.104.1
+pydantic==2.5.2
+PyJWT==2.8.0
+PyJWT==2.8.0
+uvicorn==0.24.0.post1
+python-dotenv==1.0.0
+
+### 3. Database
+SQlite
+
+### 4. Models
+Pytorch
+
 
 ## Người đóng góp
 
 ## Tài trợ
+```

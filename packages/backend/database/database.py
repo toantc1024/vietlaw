@@ -38,7 +38,6 @@ def getPhapDienData():
 def lay_all_deMuc_from_a_chuDe(chudeId):
     query = "SELECT * FROM deMuc WHERE deMuc.ChuDe = ?"
     cur.execute(query, (chudeId,))
-    return cur.fetchall()
 
 
 def lay_noidung_of_de_muc(de_muc_value):
