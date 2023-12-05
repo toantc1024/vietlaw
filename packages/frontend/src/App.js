@@ -6,16 +6,18 @@ import Search from "./features/Search";
 import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
 import Chatbot from "./features/Chatbot";
-import { useUserStore } from "./app/store";
+import { usePhapDienStore, useUserStore } from "./app/store";
 
 const App = () => {
   const { user, login, logout } = useUserStore();
-
+  const { layDuLieu, phapDien } = usePhapDienStore();
   useEffect(() => {
     (async () => {
       const username = process.env.REACT_APP_DEMO_USERNAME;
       const password = process.env.REACT_APP_DEMO_PASSWORD;
       await login(username, password);
+      // Check if phapDien is not an empty dict
+      if (Object.keys(phapDien).length === 0) await layDuLieu();
     })();
   }, []);
   return (

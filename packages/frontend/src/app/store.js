@@ -1,6 +1,31 @@
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 
+export const usePhapDienStore = create(
+  persist(
+    (set) => ({
+      phapDien: {},
+      layDuLieu: async () => {
+        const res = await fetch(
+          `${process.env.REACT_APP_API_URL}/phapdien/data`,
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+            method: "GET",
+          }
+        );
+        const phapDien = await res.json();
+        set({ phapDien });
+      },
+    }),
+    {
+      name: "phapdien", // name of the item in the storage (must be unique)
+      storage: createJSONStorage(() => sessionStorage), // (optional) by default, 'localStorage' is used
+    }
+  )
+);
+
 export const useUserStore = create(
   persist(
     (set) => ({

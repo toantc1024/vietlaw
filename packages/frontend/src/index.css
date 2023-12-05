@@ -37,3 +37,15 @@ body {
   border-radius: 5px;
   background: #555;
 }
+
+.document {
+  & a {
+    color: red !important;
+  }
+}
+
+.pGhiChu {
+  & a {
+    background-color: red !important;
+  }
+}
