@@ -8,6 +8,8 @@ from fastapi.responses import StreamingResponse
 from database.database import *
 from fastapi.responses import FileResponse
 from gradio_client import Client
+import chromadb
+from chromadb.utils import embedding_functions
 
 app = FastAPI(
     title='Vietlaw API', openapi_url='/openapi.json', docs_url='/docs',
@@ -39,6 +41,24 @@ class Chatbot(BaseModel):
 
 class DeMucRequest(BaseModel):
     demuc: str
+
+
+class DeMucSearch(BaseModel):
+    query: str
+
+
+db = chromadb.HttpClient(host='13.211.128.181', port=8000)
+deMuc = db.get_collection(name='deMuc')
+
+
+@app.post('/phapdien/search')
+def search(request_data: DeMucSearch):
+    results = deMuc.query(
+        query_texts=[request_data.query],
+        n_results=10
+    )
+    print(results)
+    return results
 
 
 @app.post('/phapdien/laydemuc')
