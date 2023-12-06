@@ -73,7 +73,9 @@ def test(request: Chatbot):
         request.text,  # str  in 'Input' Textbox component
         api_name="/predict"
     )
-    return result
+    return {
+        'result': result
+    }
 
 
 if __name__ == '__main__':

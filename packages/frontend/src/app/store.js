@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
+import { BOT_RESPONSE, USER_RESPONSE } from "./constants";
 
 export const usePhapDienStore = create(
   persist(
@@ -65,13 +66,12 @@ export const useUserStore = create(
     }
   )
 );
-
 export const useChatbotStore = create(
   persist(
-    (set) => ({
+    (set, state) => ({
       history: [],
-      addToHistory: (message) => {
-        set((state) => ({ history: [...state.history, message] }));
+      setHistory: (history) => {
+        set({ history });
       },
     }),
     {

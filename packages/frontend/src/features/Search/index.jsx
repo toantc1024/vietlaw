@@ -47,33 +47,37 @@ const Search = () => {
   return (
     <div className="h-full w-full p-4 flex flex-col gap-2 overflow-hidden">
       <div className="flex gap-4">
-        <select
-          onChange={(e) => {
-            setChude(e.target.value);
-          }}
-          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-        >
-          <option selected value={-1}>
-            {" "}
-            Chọn chủ đề
-          </option>
-          {phapDien &&
-            phapDien.chude.map((item) => {
-              return <option value={item[0]}>{item[1]}</option>;
-            })}
-        </select>
-        <select
-          onChange={(e) => {
-            setDemuc(e.target.value);
-          }}
-          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-        >
-          <option selected value={-1}>
-            {" "}
-            Chọn để mục
-          </option>
-          {chude !== -1 && loadDeMucByChuDe(chude)}
-        </select>
+        <div>
+          <select
+            onChange={(e) => {
+              setChude(e.target.value);
+            }}
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          >
+            <option selected value={-1}>
+              {" "}
+              Chọn chủ đề
+            </option>
+            {phapDien &&
+              phapDien.chude.map((item) => {
+                return <option value={item[0]}>{item[1]}</option>;
+              })}
+          </select>
+        </div>
+        <div>
+          <select
+            onChange={(e) => {
+              setDemuc(e.target.value);
+            }}
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          >
+            <option selected value={-1}>
+              {" "}
+              Chọn để mục
+            </option>
+            {chude !== -1 && loadDeMucByChuDe(chude)}
+          </select>
+        </div>
       </div>
 
       <div className="h-full w-full flex flex-col gap-2 overflow-auto">
