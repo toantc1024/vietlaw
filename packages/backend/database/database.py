@@ -1,7 +1,8 @@
 # %%%
 import sqlite3
+import os
 
-con = sqlite3.connect("./database/phapdien.db",
+con = sqlite3.connect(os.getenv('RELATIVE_FILE_PATH')+"/database/phapdien.db",
                       check_same_thread=False)
 cur = con.cursor()
 

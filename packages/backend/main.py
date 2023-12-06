@@ -43,7 +43,7 @@ class DeMucRequest(BaseModel):
 
 @app.post('/phapdien/laydemuc')
 def laydemuc(request_data: DeMucRequest):
-    return FileResponse('./database/demuc/' + request_data.demuc + '.html', media_type='text/html')
+    return FileResponse(os.getenv('RELATIVE_FILE_PATH')+'/database/demuc/' + request_data.demuc + '.html', media_type='text/html')
 
 
 @app.get('/phapdien/data')
