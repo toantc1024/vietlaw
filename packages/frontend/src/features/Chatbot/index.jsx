@@ -97,6 +97,11 @@ const Chatbot = () => {
       </div>
       <div className="bg-slate-100 w-full flex  gap-2  rounded-lg py-2">
         <textarea
+          onKeyDown={(e) => {
+            if (e.key == "Enter") {
+              sendRequest();
+            }
+          }}
           className="px-4 py-2 w-full bg-transparent focus:outline-none font-light"
           placeholder="Hãy hỏi VieLawyer một câu về pháp luật"
           type="text"
