@@ -1,3 +1,6 @@
+from transformers import T5ForConditionalGeneration, AutoTokenizer
+import torch
+import requests
 import uvicorn
 from fastapi import FastAPI, HTTPException, Depends
 from pydantic import BaseModel
@@ -16,7 +19,22 @@ app = FastAPI(
     description='LLMs for law'
 )
 
-client = Client("https://nhantran0506-vietlaw-llms.hf.space/--replicas/25jv7/")
+# API MODEL CALL
+# Chroma connect
+db = chromadb.HttpClient(host='13.211.128.181', port=8000)
+deMuc = db.get_collection(name='deMuc')
+
+MODEL_FOLDER = "nhantran0506/law-llms-v1"
+TOKENIZER_FOLDER = "nhantran0506/law-llms-v1"
+
+model = T5ForConditionalGeneration.from_pretrained(MODEL_FOLDER)
+tokenizer = AutoTokenizer.from_pretrained(TOKENIZER_FOLDER)
+
+
+generated_text = tokenizer.decode(output[0], skip_special_tokens=True)
+
+
+client = Client("https://nhantran0506-vietlaw-llms.hf.space/--replicas/tr6ht/")
 
 # Add CORS middleware
 app.add_middleware(
@@ -45,10 +63,6 @@ class DeMucRequest(BaseModel):
 
 class DeMucSearch(BaseModel):
     query: str
-
-
-db = chromadb.HttpClient(host='13.211.128.181', port=8000)
-deMuc = db.get_collection(name='deMuc')
 
 
 @app.post('/phapdien/search')
@@ -90,14 +104,51 @@ async def fake_video_streamer():
 
 @app.post('/api/chatbot', dependencies=[Depends(validate_token)])
 def test(request: Chatbot):
-    result = client.predict(
-        request.text,  # str  in 'Input' Textbox component
-        api_name="/predict"
+    # Document retrival
+    doc = deMuc.query(
+        query_texts=[request.query],
+        n_results=1
     )
+
+    if doc[1]["distance"] < 40:
+        return {
+            'result': doc["documents"][0]
+        }
+
+    # Grenerate question
+
+    question = request.text
+
+    prompt = f"""
+            {doc}
+            {question}
+            """
+
+    DEVICE = "cpu" if not torch.cuda.is_available() else "cuda"
+
+    input_ids = tokenizer.encode(
+        prompt, return_tensors="pt", max_length=512, truncation=True).to(DEVICE)
+
+    output = model.generate(input_ids,
+                            max_length=1024,
+                            num_beams=2,
+                            early_stopping=True,
+                            temperature=0.3,
+                            top_k=30,
+                            do_sample=True)
+
+    generated_text = tokenizer.decode(output[0], skip_special_tokens=True)
+
+    doc = deMuc.query(
+        query_texts=[generated_text],
+        n_results=2
+    )
+
+    if doc[1]["distance"] > 70:
+        return {
+            'result': f"Xin lỗi, tôi không hiểu câu hỏi '{question}'. Bạn có thể đặt câu hỏi khác được không?"
+        }
+
     return {
-        'result': result
+        'result': output
     }
-
-
-if __name__ == '__main__':
-    uvicorn.run(app, host='0.0.0.0', port=8000)
