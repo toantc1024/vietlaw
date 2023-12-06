@@ -7,6 +7,7 @@ import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
 import Chatbot from "./features/Chatbot";
 import { usePhapDienStore, useUserStore } from "./app/store";
+import Document from "./features/Document";
 
 const App = () => {
   const { user, login, logout } = useUserStore();
@@ -77,14 +78,7 @@ const App = () => {
         <Route path="/law" element={<Home />}>
           <Route exact path="search" element={<Search />} />
           <Route path="chatbot" element={<Chatbot />} />
-          <Route
-            path="analyze"
-            element={
-              <div className="h-full w-full bg-green-400 text-8xl">
-                Document!
-              </div>
-            }
-          />
+          <Route path="analyze" element={<Document />} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>

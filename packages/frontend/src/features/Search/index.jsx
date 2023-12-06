@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { usePhapDienStore } from "../../app/store";
+
 const Search = () => {
   const { phapDien } = usePhapDienStore();
   console.log(phapDien.chude);
   const [chude, setChude] = useState(-1);
   const [demuc, setDemuc] = useState(-1);
   const [deMucData, setDeMucData] = useState({ __html: "" });
-
   const loadDeMucByChuDe = (chudeId) => {
     if (chude === -1) {
       return (
@@ -75,12 +75,9 @@ const Search = () => {
           {chude !== -1 && loadDeMucByChuDe(chude)}
         </select>
       </div>
-      <div className="text-xl text-blue-500">
-        Have found 255 results in 0.2s
-      </div>
 
       <div className="h-full w-full flex flex-col gap-2 overflow-auto">
-        <div className="bg-blue-400 px-4 py-4 rounded-lg flex flex-col gap-4">
+        <div className=" px-4 py-4 rounded-lg flex flex-col gap-4">
           <p>
             {deMucData && (
               <div dangerouslySetInnerHTML={deMucData} />
