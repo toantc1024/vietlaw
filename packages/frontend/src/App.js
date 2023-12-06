@@ -21,7 +21,6 @@ const App = () => {
       if (Object.keys(phapDien).length === 0) await layDuLieu();
     })();
   }, []);
-  alert(process.env.REACT_APP_DEMO_PASSWORD);
   return (
     <Fragment>
       <Routes>
