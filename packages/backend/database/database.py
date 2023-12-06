@@ -13,7 +13,7 @@ def lay_du_lieu(table_name):
 
 def lay_all_chuDe():
     cur.execute("SELECT * from chuDe")
-    return cur.fetchall()
+    return cur. fetchall()
 
 
 def lay_de_muc_content(demucId):

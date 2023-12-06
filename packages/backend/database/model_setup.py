@@ -12,17 +12,13 @@ tokenizer = AutoTokenizer.from_pretrained(TOKENIZER_FOLDER)
 # Document retrival
 doc = ""
 
-
 # Grenerate question
+
 question = input("Question: ")
 
 prompt = f"""
         {doc}
         {question}
-        
-        
-       
-        
         """
 
 DEVICE = "cpu" if not torch.cuda.is_available() else "cuda"

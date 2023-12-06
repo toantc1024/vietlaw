@@ -7,11 +7,14 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse
 from database.database import *
 from fastapi.responses import FileResponse
+from gradio_client import Client
 
 app = FastAPI(
     title='Vietlaw API', openapi_url='/openapi.json', docs_url='/docs',
     description='LLMs for law'
 )
+
+client = Client("https://nhantran0506-vietlaw-llms.hf.space/--replicas/25jv7/")
 
 # Add CORS middleware
 app.add_middleware(
@@ -27,6 +30,10 @@ app.add_middleware(
 class LoginRequest(BaseModel):
     username: str
     password: str
+
+
+class Chatbot(BaseModel):
+    text: str
 
 
 class DeMucRequest(BaseModel):
@@ -61,8 +68,12 @@ async def fake_video_streamer():
 
 
 @app.post('/api/chatbot', dependencies=[Depends(validate_token)])
-def test():
-    return StreamingResponse(fake_video_streamer())
+def test(request: Chatbot):
+    result = client.predict(
+        request.text,  # str  in 'Input' Textbox component
+        api_name="/predict"
+    )
+    return result
 
 
 if __name__ == '__main__':
