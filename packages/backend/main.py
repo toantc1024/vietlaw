@@ -10,6 +10,11 @@ from gradio_client import Client
 import chromadb
 from chromadb.utils import embedding_functions
 
+# these three lines swap the stdlib sqlite3 lib with the pysqlite3 package
+__import__('pysqlite3')
+import sys
+sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
+
 app = FastAPI(
     title='Vietlaw API', openapi_url='/openapi.json', docs_url='/docs',
     description='LLMs for law'
