@@ -1,5 +1,4 @@
 # VieLaw
-Giới thiệu: https://docs.google.com/presentation/d/1lIQkVMXihpv43M7-H9dsEb2nZW-Vi0IOD24VI0C6oG8/edit#slide=id.g263099ea1ba_0_36
 
 ![VieLaw OpenSource](./docs/images/vielaw_header.png)
 
@@ -8,6 +7,7 @@ Xem trang này dưới ngôn ngữ khác:
 - [English](./docs/README_en.md)
 
 ## Tính năng
+Slide Giới thiệu: https://docs.google.com/presentation/d/1lIQkVMXihpv43M7-H9dsEb2nZW-Vi0IOD24VI0C6oG8/edit#slide=id.g263099ea1ba_0_36
 
 1. Chatbot hỗ trợ thông tin - Test tại đây: https://huggingface.co/nhantran0506
 2. Tra cứu pháp điển
