@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { usePhapDienStore } from "../../app/store";
+import { usePhapDienStore, useSearchStore } from "../../app/store";
 
 const Search = () => {
   const { phapDien } = usePhapDienStore();
+  const { searchResult } = useSearchStore();
   console.log(phapDien.chude);
   const [chude, setChude] = useState(-1);
   const [demuc, setDemuc] = useState(-1);
+  const [searchText, setSearchText] = useState("");
   const [deMucData, setDeMucData] = useState({ __html: "" });
   const loadDeMucByChuDe = (chudeId) => {
     if (chude === -1) {
@@ -82,12 +84,19 @@ const Search = () => {
 
       <div className="h-full w-full flex flex-col gap-2 overflow-auto">
         <div className=" px-4 py-4 rounded-lg flex flex-col gap-4">
-          <p>
+          <div className="flex gap-2 flex-col">
+            {searchResult &&
+              Object.keys(searchResult).length > 0 &&
+              searchResult.documents[0].map((item) => {
+                return <div className="p-2 bg-blue-300 rounded-lg">{item}</div>;
+              })}
+          </div>
+          <span>
             {deMucData && (
               <div dangerouslySetInnerHTML={deMucData} />
               // <iframe srcDoc={deMucData} title="My Frame" />
             )}
-          </p>
+          </span>
         </div>
       </div>
     </div>

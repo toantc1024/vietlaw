@@ -80,3 +80,10 @@ export const useChatbotStore = create(
     }
   )
 );
+
+export const useSearchStore = create((set) => ({
+  searchResult: null,
+  setSearchResult: (searchResult) => {
+    set({ searchResult });
+  },
+}));
