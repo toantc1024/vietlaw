@@ -22,6 +22,9 @@ Tất cả mã nguồn của dự án đều sẵn sàng trên Internet, bạn c
 
 ## Cài đặt
 
+
+Link Github Models sau khi fine tuning của nhóm: https://huggingface.co/nhantran0506/law-llms-v1
+
 `
 
 ### 1. Models
