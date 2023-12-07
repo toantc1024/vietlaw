@@ -13,6 +13,8 @@ Xem trang này dưới ngôn ngữ khác:
 
 ## Demo
 
+[Screencast from 07-12-2023 17:28:38.webm](https://github.com/toantc1024/vietlaw/assets/60417892/e897e94e-3ece-4251-9bf6-c2f337485e70)
+
 ![Alt text](image.png)
 
 Tra cuu bang ChromaDB
