@@ -3,7 +3,5 @@ gradio_client
 pydantic
 PyJWT==2.8.0
 python-dotenv
-torch
-transformers
 uvicorn
-weaviate_client
+chromadb
