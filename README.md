@@ -1,4 +1,5 @@
 # VieLaw
+Giới thiệu: https://docs.google.com/presentation/d/1lIQkVMXihpv43M7-H9dsEb2nZW-Vi0IOD24VI0C6oG8/edit#slide=id.g263099ea1ba_0_36
 
 ![VieLaw OpenSource](./docs/images/vielaw_header.png)
 
@@ -147,3 +148,6 @@ Mô hình Open Source Sbert để Fine tuning: https://huggingface.co/keepitreal
 ## Người đóng góp
 
 ## Tài trợ
+Chúng tôi cần những nhà tài trợ để tiếp tục phát triển dự án này
+Việc deploy các server ở phía backend cần sự tài trợ.
+Bạn có thể đóng góp bằng việc đóng góp cho kho mã nguồn và đó cũng là một sự tài trợ rất lớn với chúng tôi!
