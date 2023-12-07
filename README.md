@@ -134,6 +134,8 @@ ChromaDB - Link: https://pypi.org/project/chromadb/
 
 ### 4. Models
 
+Tài liệu để đóng góp mã nguồn model: https://github.com/toantc1024/vietlaw/blob/main/docs/wiki/vi/models/Document.md
+
 Pytorch
 
 Mô hình Open Source Sbert để Fine tuning: https://huggingface.co/keepitreal/vietnamese-sbert
