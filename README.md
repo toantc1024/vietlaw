@@ -92,7 +92,7 @@ Khởi chạy dự án VieLaw trên mức frontend
 
 ```
     npm run start
-``
+```
 
 
 Dự án frontend sẽ được chạy trên host mặc đinh là `localhost:3000`
@@ -131,4 +131,4 @@ Pytorch
 ## Người đóng góp
 
 ## Tài trợ
-```
+
