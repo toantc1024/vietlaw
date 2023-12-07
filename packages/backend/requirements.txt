@@ -4,5 +4,5 @@ pydantic
 PyJWT==2.8.0
 python-dotenv
 uvicorn
-chromadb
+chromadb=0.3.29
 pysqlite3
