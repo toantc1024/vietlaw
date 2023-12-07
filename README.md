@@ -129,7 +129,8 @@ python-dotenv==1.0.0
 
 ### 3. Database
 
-SQlite
+SQlite - Link: https://www.sqlite.org/index.html
+ChromaDB - Link: https://pypi.org/project/chromadb/
 
 ### 4. Models
 
