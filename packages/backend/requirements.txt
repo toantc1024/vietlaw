@@ -5,3 +5,4 @@ PyJWT==2.8.0
 python-dotenv
 uvicorn
 chromadb
+sqlite3
