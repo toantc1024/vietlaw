@@ -7,9 +7,8 @@ Xem trang này dưới ngôn ngữ khác:
 - [English](./docs/README_en.md)
 
 ## Tính năng
-1. Chatbot
-2. Generate câu trắc nghiệm
-3. Tra cứu pháp điển
+1. Chatbot hỗ trợ thông tin - Test tại đây: https://huggingface.co/nhantran0506
+2. Tra cứu pháp điển
 
 ## Demo
 
@@ -105,7 +104,7 @@ Dự án frontend sẽ được chạy trên host mặc đinh là `localhost:300
 
 E-mails: [toantc1024](mailto:tctoan1024@gmail.com)
 
-## Giấy phép
+## Giấy phép và ghi công
 ### 1. Front End
 - Icons: https://react-icons.github.io/react-icons/ - MIT (Hero Icons)
 - ReactJS 18 - MIT
@@ -127,6 +126,8 @@ SQlite
 ### 4. Models
 Pytorch
 
+
+Mô hình Open Source Sbert để Fine tuning: https://huggingface.co/keepitreal/vietnamese-sbert
 
 ## Người đóng góp
 
