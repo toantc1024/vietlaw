@@ -1,19 +1,20 @@
-import sys
-from fastapi import FastAPI, HTTPException, Depends
-from pydantic import BaseModel
-from auth import *
-from security import validate_token
-from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import StreamingResponse
-from database.database import *
-from fastapi.responses import FileResponse
 from gradio_client import Client
+from fastapi.responses import FileResponse
+from database.database import *
+from fastapi.responses import StreamingResponse
+from fastapi.middleware.cors import CORSMiddleware
+from security import validate_token
+from auth import *
+from pydantic import BaseModel
+from fastapi import FastAPI, HTTPException, Depends
+import sys
 import chromadb
 from chromadb.utils import embedding_functions
-
-# these three lines swap the stdlib sqlite3 lib with the pysqlite3 package
 __import__('pysqlite3')
 sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
+
+
+# these three lines swap the stdlib sqlite3 lib with the pysqlite3 package
 
 app = FastAPI(
     title='Vietlaw API', openapi_url='/openapi.json', docs_url='/docs',
