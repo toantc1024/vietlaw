@@ -131,6 +131,8 @@ python-dotenv==1.0.0
 
 ### 3. Database
 
+![CSDL ERD](image-2.png)
+
 SQlite - Link: https://www.sqlite.org/index.html
 ChromaDB - Link: https://pypi.org/project/chromadb/
 
